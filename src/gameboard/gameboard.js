@@ -2,6 +2,8 @@ const Ship = require("../ship/ship");
 
 const Field = {
   empty: '-',
+  hit: 'X',
+  water: 'W',
 }
 
 class GameBoard{
@@ -41,6 +43,8 @@ class GameBoard{
     return false;
   }
 
+  isLegalTarget = (x, y) => this.matrix[y][x] === Field.empty;
+
   receiveAttack = (x, y) => {
     // check if hit ship
     // call hit function of correct ship if hit
@@ -48,13 +52,13 @@ class GameBoard{
     const field = this.matrix[y][x];
     if (field instanceof Ship){
       field.hit();
-      this.set_field('X', x, y)
+      this.set_field(Field.hit, x, y)
       if (field.isSunk()){
         this.num_ships --;
       }
     }
     else {
-      this.set_field('W', x, y)
+      this.set_field(Field.water, x, y)
     }
   }
 
