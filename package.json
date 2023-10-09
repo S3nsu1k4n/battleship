@@ -4,9 +4,9 @@
   "description": "The Odin Project: Battleship",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "gh-pages": "git subtree push --prefix dist origin gh-pages"
+    "gh-pages": "git subtree push --prefix dist origin gh-pages",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
