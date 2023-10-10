@@ -18,3 +18,4 @@ export { A,
  } from './elements'
 
  export { Searchbar } from './searchbar'
+ export { GameBoardDOM } from './gameboard'

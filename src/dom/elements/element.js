@@ -16,8 +16,11 @@ export class BasicElement{
     }
     return last_element;
   };
-  
+  set_id = string => this.element.id = string;
   on_click = func => this.element.addEventListener('click', func);
+
+  on_hover_in = func => this.element.addEventListener('mouseover', func);
+  on_hover_out = func => this.element.addEventListener('mouseout', func);
   
   init = () => {
     this.set_text(this.text);

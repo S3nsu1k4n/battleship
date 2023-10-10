@@ -1,4 +1,4 @@
-class Ship{
+export class Ship{
   constructor(length){
     this.length = length;
     this.num_hits = 0;
@@ -11,4 +11,3 @@ class Ship{
 
   isSunk = () => this.is_sunk = this.num_hits >= this.length;
 }
-module.exports = Ship

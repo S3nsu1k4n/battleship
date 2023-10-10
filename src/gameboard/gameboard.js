@@ -1,4 +1,4 @@
-const Ship = require("../ship/ship");
+import { Ship } from '../ship'
 
 const Field = {
   empty: '-',
@@ -6,9 +6,9 @@ const Field = {
   water: 'W',
 }
 
-class GameBoard{
+export class GameBoard{
   constructor(){
-    this.length = 10;
+    this.length = 9;
     this.matrix = [];
     this.num_ships = 0;
     this.init_matrix();
@@ -43,7 +43,7 @@ class GameBoard{
     return false;
   }
 
-  isLegalTarget = (x, y) => this.matrix[y][x] === Field.empty;
+  isLegalTarget = (x, y) => this.matrix[y][x] === Field.empty || this.matrix[y][x] instanceof Ship;
 
   receiveAttack = (x, y) => {
     // check if hit ship
@@ -56,12 +56,13 @@ class GameBoard{
       if (field.isSunk()){
         this.num_ships --;
       }
+      return Field.hit;
     }
     else {
       this.set_field(Field.water, x, y)
+      return Field.water;
     }
   }
 
   all_ships_sunk = () => this.num_ships == 0;
 }
-module.exports = GameBoard
